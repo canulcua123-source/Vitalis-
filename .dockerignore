@@ -1,0 +1,17 @@
+target
+.git
+.gitignore
+.DS_Store
+*.log
+**/*.log
+app.log
+app_debug.log
+server_logs*.txt
+spring_boot.log
+*.iml
+.idea
+node_modules
+test_output.log
+jar_contents.txt
+mapper.class
+firebase-service-account.json

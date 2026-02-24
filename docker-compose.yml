@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: clinica-api-db
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_NAME:-clinica_db} # Toma del .env o usa "clinica_db"
+      POSTGRES_USER: ${DB_USER:-clinica_admin}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-super_secret_password}
+      TZ: UTC # Muy importante para nuestra arquitectura
+    ports:
+      - "5432:5432"
+    volumes:
+      - clinica_db_data:/var/lib/postgresql/data
+    networks:
+      - clinica-network
+
+  api:
+    build: .
+    container_name: clinica-api
+    restart: always
+    depends_on:
+      - postgres
+    env_file:
+      - ./.env.local
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/clinica_db
+      DB_USER: ${DB_USER:-clinica_admin}
+      DB_PASSWORD: ${DB_PASSWORD:-super_secret_password}
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-}
+      APP_RATE_LIMIT_ENABLED: "false"
+      FIREBASE_REQUIRED: ${FIREBASE_REQUIRED:-false}
+      FIREBASE_CREDENTIALS_PATH: /secrets/firebase-service-account.json
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./secrets/firebase-service-account.json:/secrets/firebase-service-account.json:ro
+    networks:
+      - clinica-network
+
+volumes:
+  clinica_db_data: # Persistencia de PostgreSQL (Para no perder datos al apagar Docker)
+
+networks:
+  clinica-network:
+    driver: bridge

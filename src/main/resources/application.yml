@@ -1,0 +1,66 @@
+server:
+  port: ${PORT:8080}
+  error:
+    include-message: always
+    include-binding-errors: always
+
+spring:
+  application:
+    name: clinica-api
+  
+  # Base de Datos PostgreSQL
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/clinica_db}
+    username: ${DB_USER:clinica_admin}
+    password: ${DB_PASSWORD:super_secret_password}
+    driver-class-name: org.postgresql.Driver
+
+  # Flyway (Ejecutor de tu .sql)
+  flyway:
+    enabled: true
+    baseline-on-migrate: true # Si la BDD ya existía, Flyway no se quejará
+    locations: classpath:db/migration # Aquí buscaremos tu /.sql
+
+  # JPA / Hibernate
+  jpa:
+    hibernate:
+      ddl-auto: validate # Jamás 'update' en producción, solo validar el esquema real
+    show-sql: ${SHOW_SQL:true} # false en prod
+    open-in-view: ${OPEN_IN_VIEW:true}
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+
+  # Jackson / Fechas
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    time-zone: UTC
+
+security:
+  jwt:
+    secret-key: ${JWT_SECRET_KEY:DebeSerUnaClaveEnormeDeAlMenosDocientosCincuentaYSeisBitsGeneradaPorT}
+    expiration-time: ${JWT_EXPIRATION:86400000} # 24 hrs
+
+stripe:
+  secret-key: ${STRIPE_SECRET_KEY:sk_test_...}
+  webhook-secret: ${STRIPE_WEBHOOK_SECRET:}
+
+app:
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:*}
+  firebase:
+    required: ${FIREBASE_REQUIRED:false}
+    credentials-path: ${FIREBASE_CREDENTIALS_PATH:}
+  rate-limit:
+    enabled: ${APP_RATE_LIMIT_ENABLED:true}
+    capacity: ${APP_RATE_LIMIT_ENABLED_CAPACITY:10}
+    window-seconds: ${APP_RATE_LIMIT_ENABLED_WINDOW:60}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

@@ -1,0 +1,40 @@
+{
+    "app_name": "Vitalis",
+    "login": {
+        "title": "Welcome back",
+        "subtitle": "Enter your credentials to continue",
+        "email": "Email address",
+        "password": "Password",
+        "btn_login": "Sign In",
+        "forgot_password": "Forgot password?",
+        "no_account": "Don't have an account?",
+        "register": "Register here",
+        "google_login": "Continue with Google"
+    },
+    "register": {
+        "title": "Create account",
+        "subtitle": "Join our medical platform",
+        "role_selection": "Select your role",
+        "patient": "Patient",
+        "doctor": "Doctor",
+        "full_name": "Full name",
+        "specialty": "Specialty",
+        "license": "Medical License",
+        "btn_register": "Sign Up"
+    },
+    "home": {
+        "search_hint": "Search doctors, specialties...",
+        "specialties": "Specialties",
+        "next_appointment": "Next appointment",
+        "see_all": "See all",
+        "top_doctors": "Top doctors"
+    },
+    "profile": {
+        "title": "Profile",
+        "personal_data": "Personal data",
+        "medical_history": "Medical history",
+        "logout": "Logout",
+        "settings": "Settings",
+        "help": "Help"
+    }
+}

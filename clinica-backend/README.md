@@ -4,8 +4,20 @@
 [![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.2.4-brightgreen?style=for-the-badge&logo=springboot)](https://spring.io/projects/spring-boot)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue?style=for-the-badge&logo=postgresql)](https://www.postgresql.org/)
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue?style=for-the-badge&logo=docker)](https://www.docker.com/)
+[![API Docs](https://img.shields.io/badge/API-Documentation-red?style=for-the-badge&logo=read-the-docs)](./API_DOCUMENTATION.md)
 
 Este es el motor central de una plataforma de gestión clínica de alta gama. No es solo un CRUD; es un sistema robusto diseñado para manejar transacciones financieras reales, notificaciones en tiempo real y escalabilidad empresarial.
+
+---
+
+## 📖 Documentación del Proyecto
+
+Para una inmersión técnica profunda, consulta los pilares de nuestra documentación:
+
+- 🛡️ **[Sistema de Autenticación y Seguridad](./docs/AUTH_SYSTEM.md)**: Detalle de JWT, Roles y Rate Limiting.
+- 🗄️ **[Arquitectura de Base de Datos](./DB_SCHEMA.md)**: Diagrama ERD y optimizaciones de PostgreSQL.
+- 👉 **[Documentación de la API y Guía de Postman](./API_DOCUMENTATION.md)**: Especificación técnica y pruebas automatizadas.
+- 🧪 **[Manual de Pruebas Postman](./docs/POSTMAN_GUIDE.md)**: Guía paso a paso para validación total.
 
 ---
 

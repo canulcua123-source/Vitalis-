@@ -1,0 +1,40 @@
+name: Backend CI (Java Spring Boot)
+
+on:
+  push:
+    branches: [ "main", "master" ]
+    paths:
+      - 'clinica-backend/**'
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    name: Compilar y Testear Backend
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Descargar el código del repositorio
+      uses: actions/checkout@v4
+
+    - name: ☕ Configurar Java (JDK 21)
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: ⚙️ Dar permisos de ejecución a Maven Wrapper
+      working-directory: ./clinica-backend
+      run: chmod +x mvnw
+
+    - name: ⚙️ Compilar el proyecto con Maven
+      working-directory: ./clinica-backend
+      run: ./mvnw clean package -DskipTests
+
+    - name: 📦 Subir el archivo .jar compilado como Evidencia
+      uses: actions/upload-artifact@v4
+      with:
+        name: clinica-backend-build
+        path: clinica-backend/target-cli/*.jar
+        retention-days: 5

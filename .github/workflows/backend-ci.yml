@@ -5,8 +5,10 @@ on:
     branches: [ "main", "master" ]
     paths:
       - 'clinica-backend/**'
+      - '.github/workflows/backend-ci.yml'
   pull_request:
     branches: [ "main", "master" ]
+  workflow_dispatch: # Permite ejecutar el workflow manualmente desde la interfaz de GitHub
 
 jobs:
   build:

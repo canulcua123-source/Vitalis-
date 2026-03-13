@@ -22,7 +22,6 @@ jobs:
       - name: 🐦 Configurar Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.0' # Basado en la configuración de entorno sdk: ^3.11.0 de tu pubspec
           channel: 'stable'
           cache: true
 

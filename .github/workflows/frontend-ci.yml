@@ -1,0 +1,42 @@
+name: Frontend CI (Flutter Android)
+
+on:
+  push:
+    branches: [ "main", "master" ]
+    paths:
+      - 'clinica-frontend/**'
+      - '.github/workflows/frontend-ci.yml'
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Compilar APK de Flutter
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Descargar el código del repositorio
+        uses: actions/checkout@v4
+
+      - name: 🐦 Configurar Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0' # Basado en la configuración de entorno sdk: ^3.11.0 de tu pubspec
+          channel: 'stable'
+          cache: true
+
+      - name: 📦 Instalar dependencias
+        working-directory: ./clinica-frontend
+        run: flutter pub get
+
+      - name: 🔨 Compilar APK (Release)
+        working-directory: ./clinica-frontend
+        run: flutter build apk --release
+
+      - name: ⬆️ Subir APK como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: clinica-app-release
+          path: clinica-frontend/build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 7

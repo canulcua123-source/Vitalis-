@@ -26,13 +26,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: ⚙️ Dar permisos de ejecución a Maven Wrapper
-      working-directory: ./clinica-backend
-      run: chmod +x mvnw
-
     - name: ⚙️ Compilar el proyecto con Maven
       working-directory: ./clinica-backend
-      run: ./mvnw clean package -DskipTests
+      run: mvn clean package -DskipTests
 
     - name: 📦 Subir el archivo .jar compilado como Evidencia
       uses: actions/upload-artifact@v4

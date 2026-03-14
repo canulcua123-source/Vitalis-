@@ -2,6 +2,8 @@
 
 ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
+![CI - App](https://img.shields.io/github/actions/workflow/status/canulcua123-source/Vitalis-/frontend-ci.yml?branch=main&label=Build%3A%20Flutter%20App&style=for-the-badge&logo=github&color=success)
+![CI - Backend](https://img.shields.io/github/actions/workflow/status/canulcua123-source/Vitalis-/backend-ci.yml?branch=main&label=Build%3A%20Java%20API&style=for-the-badge&logo=github&color=success)
 ![Clean Architecture](https://img.shields.io/badge/Architecture-Clean-blue?style=for-the-badge)
 ![Security-Grade](https://img.shields.io/badge/Security-Enterprise-red?style=for-the-badge)
 
